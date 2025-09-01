@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-demo
+  labels:
+    purpose: config
+    environment: dev
+data:
+  MONGO: "true" 
+  MONGO_URL: "mongodb://mongodb:27017/catalogue"
+  
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue
+  namespace: roboshop
+  labels:
+    component: catalogue 
+    project: roboshop
+    tier: app
+spec:
+# no of replicas needed
+  replicas: 1
+  selector:
+    matchLabels:
+  # these are the labels replica set uses to create pod replicas, this should match pod replicas
+      component: catalogue 
+      project: roboshop
+      tier: app
+    # this is pod defination
+  template:
+    metadata:
+      labels:
+        component: catalogue 
+        project: roboshop
+        tier: app
+    spec:
+      containers:
+      - name: mongodb
+        image: bhargav9968/catalogue:v1
