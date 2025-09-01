@@ -44,5 +44,5 @@ spec:
   ports:
     - protocol: TCP
       port: 27017 # service port
-      targetPort: 27017 # container port(nginx container)        
+      targetPort: 27017 # container port(mongodb container)        
           
