@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: bhargav9968/catalogu:v1
+        image: bhargav9968/catalogue:v1
         envFrom:
         - configMapRef:
             name: catalogue
