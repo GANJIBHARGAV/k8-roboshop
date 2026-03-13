@@ -23,7 +23,7 @@ metadata:
     tier: app
 spec:
 # no of replicas needed
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
   # these are the labels replica set uses to create pod replicas, this should match pod replicas
@@ -39,7 +39,7 @@ spec:
         tier: app
     spec:
       containers:
-      - name: mongodb
+      - name: catalogue
         image: bhargav9968/catalogue:v1
         envFrom:
         - configMapRef:
@@ -65,4 +65,4 @@ spec:
   ports:
     - protocol: TCP
       port: 8080 # service port
-      targetPort: 8080 # container port(nginx container)
+      targetPort: 8080 # container port(catalogue container)
